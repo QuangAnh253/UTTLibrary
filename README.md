@@ -16,6 +16,7 @@ Phát triển bằng **Java Swing**, kết nối **MySQL**, chạy trên NetBean
 ## 🗂 2) Cấu trúc thư mục chính
 
 `src/com/uttlibrary/` gồm:
+
 - `main/` → Main.java
 - `auth/` → Login
 - `util/` → DB, Validator, Helper, MessageBox
@@ -25,14 +26,13 @@ Phát triển bằng **Java Swing**, kết nối **MySQL**, chạy trên NetBean
 - `controller/` → Xử lý nghiệp vụ
 - `view/` → GUI panel + form
 
-
 ---
 
 ## 🔌 3) Cấu hình Database (MySQL)
 
-- URL: `jdbc:mysql://localhost:3306/UTTLibraryDB`  
-- User: `root`  
-- Pass: `<mật khẩu của bạn>`  
+- URL: `jdbc:mysql://localhost:3306/UTTLibraryDB`
+- User: `root`
+- Pass: `<mật khẩu của bạn>`
 
 File cấu hình: `/src/com/uttlibrary/util/DBConnect.java`
 
@@ -40,7 +40,7 @@ File cấu hình: `/src/com/uttlibrary/util/DBConnect.java`
 
 1. Mở MySQL Workbench.
 2. Tạo database:
-CREATE DATABASE UTTLibraryDB;
+   CREATE DATABASE UTTLibraryDB;
 3. Import file SQL mẫu:
 
 /docs/create-tables.sql → tạo bảng
@@ -116,55 +116,106 @@ Tất cả Controller phải extends.
 
 ---
 
-Đây là phiên bản sửa lại, chi tiết hơn từ lúc clone dự án đến push, bao gồm cả bước **pull trước khi push**:
+# 🔄 Quy trình Pull Request – Quản lý code
 
-## 🔄 6) **Quy trình Git – BẮT BUỘC CHUẨN HÓA**
+Chúng ta sử dụng **mô hình Pull Request (PR)** để quản lý code.
 
-### ✔ 1) Clone dự án về máy
-
-git clone <repo-url>
-cd <ten-du-an>
-
-### ✔ 2) Tạo branch cho từng người (theo module / tên)
-
-git checkout -b <ten-module>/<ten-ban>
-
-Ví dụ:
-git checkout -b book/duythanh
-git checkout -b loan/quanganh
-
-> Mỗi người làm việc trên **branch riêng** để tránh xung đột.
-
-### ✔ 3) Khi bắt đầu làm việc mỗi ngày, pull code mới từ remote về
-
-git checkout <branch-cua-ban>
-git pull origin main
-
-> Đảm bảo luôn đồng bộ với main trước khi code hoặc push.
-
-### ✔ 4) Thêm, commit và push code sau khi hoàn thành
-
-git add .
-git commit -m "[module] mô tả ngắn gọn thay đổi"
-git push origin <branch-cua-ban>
-
-**Lưu ý:**
-
-- Không commit rác, không ghi `"update"`, `"fix"`, `"xong"`.
-- Ghi theo mẫu:
-
-  - `[Book] Thêm DAO + model + controller`
-  - `[Login] Hoàn thiện UI + validate`
-  - `[Reader] Xử lý CRUD + load table`
-
-### ✔ 5) Merge vào main
-
-git checkout main
-git pull origin main
-git merge <branch-cua-thanh-vien>
-git push origin main
+- Nhánh `main` được **bảo vệ** và **yêu cầu review** trước khi merge.
 
 ---
+
+## Bước 1: Bắt đầu task mới
+
+Luôn bắt đầu từ nhánh `main` đã được cập nhật:
+
+```bash
+# Chuyển về nhánh main
+git checkout main
+
+# Lấy code mới nhất
+git pull origin main
+
+Tạo **nhánh mới** cho nhiệm vụ theo cấu trúc:
+
+[ten-thanh-vien]/[mo-ta-ngan-task]
+```
+
+### Prefix nhánh theo thành viên:
+
+| Thành viên        | Prefix nhánh |
+| ----------------- | ------------ |
+| Nguyễn Duy Thành  | duythanh     |
+| Vũ Thị Thùy Trang | thuytrang    |
+| Nguyễn Minh Lộc   | vanloc       |
+| Nguyễn Thị Hồng   | thihong      |
+| Lê Quang Anh      | quanganh     |
+
+**Ví dụ:**
+
+```bash
+# Duy Thành làm module Sách
+git checkout -b duythanh/feature-module-sach
+```
+
+---
+
+## Bước 2: Code và Commit
+
+- Làm việc trên nhánh mới của bạn.
+- Commit các thay đổi thường xuyên với **message rõ ràng**.
+
+```bash
+# Thêm các file đã thay đổi
+git add .
+
+# Commit với message
+git commit -m "Feat: Hoan thien chuc nang BookDAO"
+```
+
+---
+
+## Bước 3: Push và Tạo Pull Request
+
+- Khi hoàn thành task, **đẩy nhánh lên GitHub**:
+
+```bash
+# Đẩy nhánh mới lên remote (thêm -u cho lần đầu tiên)
+git push -u origin [ten-nhanh-cua-ban]
+```
+
+- Truy cập GitHub → sẽ thấy thông báo **"Compare & pull request"** → nhấn vào.
+- Đặt **tiêu đề rõ ràng**, ví dụ: “Hoàn thành chức năng Quản lý Sách”.
+- Trong phần **Reviewers**, chọn **Quang Anh**.
+- Nhấn **Create pull request**.
+
+---
+
+## Bước 4: Review và Merge
+
+- **Thành viên không tự merge** code vào `main`.
+
+- **Quang Anh** sẽ review code:
+
+  - Nếu code đạt yêu cầu → merge PR.
+  - Nếu cần chỉnh sửa → comment → thành viên sửa trên **nhánh cũ** → push lên PR (PR tự cập nhật).
+
+- Sau khi nhánh được merge:
+
+```bash
+# Quay về main và cập nhật code mới
+git checkout main
+git pull origin main
+
+# Xóa nhánh local
+git branch -d [ten-nhanh-cua-ban]
+```
+
+---
+
+💡 **Lưu ý:**
+
+- Message commit nên bắt đầu với **type**: `Feat:`, `Fix:`, `Refactor:`, …
+- Luôn pull trước khi bắt đầu task để tránh conflict.
 
 ## 7) PHÂN CÔNG CHI TIẾT THEO FILE
 
@@ -243,6 +294,7 @@ git push origin main
 4. Import database bằng file SQL trong docs/.
 5. Build project.
 6. Chạy Main.java.
+
 ---
 
 ## 9) Lưu ý cuối
