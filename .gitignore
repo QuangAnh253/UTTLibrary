@@ -1,0 +1,20 @@
+# === JAVA ===
+*.class
+*.log
+
+# === NETBEANS ===
+nbproject/private/
+build/
+dist/
+nbactions.xml
+nb-configuration.xml
+
+# === IDEA ===
+.idea/
+*.iml
+out/
+
+# === OS TRASH ===
+.DS_Store
+Thumbs.db
+
