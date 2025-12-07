@@ -15,16 +15,16 @@ Phát triển bằng **Java Swing**, kết nối **MySQL**, chạy trên NetBean
 
 ## 🗂 2) Cấu trúc thư mục chính
 
-src/
-└── com/uttlibrary/
-├── main/ → Main.java
-├── auth/ → Login
-├── util/ → DB, Validator, Helper, MessageBox
-├── component/ → UI component dùng chung
-├── model/ → Class đại diện bảng DB
-├── dao/ → Data Access
-├── controller/ → Xử lý nghiệp vụ
-└── view/ → GUI panel + form
+`src/com/uttlibrary/` gồm:
+- `main/` → Main.java
+- `auth/` → Login
+- `util/` → DB, Validator, Helper, MessageBox
+- `component/` → UI component dùng chung
+- `model/` → Class đại diện bảng DB
+- `dao/` → Data Access
+- `controller/` → Xử lý nghiệp vụ
+- `view/` → GUI panel + form
+
 
 ---
 
@@ -32,7 +32,7 @@ src/
 
 - URL: `jdbc:mysql://localhost:3306/UTTLibraryDB`
 - User: `root`
-- Pass: `Admin@123`
+- Pass: `` <-- Tự sửa lại
 
 File cấu hình: `/src/com/uttlibrary/util/DBConnect.java`
 
@@ -155,9 +155,9 @@ git push origin main
 
 ---
 
-## 👥 7) PHÂN CÔNG CHI TIẾT THEO FILE
+## 7) PHÂN CÔNG CHI TIẾT THEO FILE
 
-### 👑 1) **QUANG ANH**
+### 1) **QUANG ANH**
 
 #### A. CORE
 
@@ -184,7 +184,7 @@ git push origin main
 
 ---
 
-### 🟩 2) **DUY THÀNH**
+### 2) **DUY THÀNH**
 
 **Reader – Staff – Booking**
 
@@ -197,7 +197,7 @@ git push origin main
 
 ---
 
-### 🟧 3) **THÙY TRANG – Supplier – ImportBook – Regulation**
+### 3) **THÙY TRANG – Supplier – ImportBook – Regulation**
 
 - model/\*
 - dao/\*
@@ -206,7 +206,7 @@ git push origin main
 
 ---
 
-### 🟦 4) **HỒNG – Category – ShelfLocation **
+### 4) **HỒNG – Category – ShelfLocation **
 
 - model/\*
 - dao/\*
@@ -215,7 +215,7 @@ git push origin main
 
 ---
 
-### 🟪 5) **LỘC – Author – Publisher**
+### 5) **LỘC – Author – Publisher**
 
 - model/\*
 - dao/\*
@@ -224,7 +224,7 @@ git push origin main
 
 ---
 
-## 🧪 8) Hướng dẫn chạy dự án
+## 8) Hướng dẫn chạy dự án
 
 1. Import project vào NetBeans / IntelliJ
 2. Import thư viện trong thư mục `lib/`
@@ -233,7 +233,7 @@ git push origin main
 
 ---
 
-## 📌 9) Lưu ý cuối
+## 9) Lưu ý cuối
 
 - Không push file `.class`, `dist/`, `build/`
 - CÓ push thư viện `.jar` trong `lib/`
