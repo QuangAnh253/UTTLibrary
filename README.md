@@ -30,13 +30,24 @@ Phát triển bằng **Java Swing**, kết nối **MySQL**, chạy trên NetBean
 
 ## 🔌 3) Cấu hình Database (MySQL)
 
-- URL: `jdbc:mysql://localhost:3306/UTTLibraryDB`
-- User: `root`
-- Pass: `` <-- Tự sửa lại
+- URL: `jdbc:mysql://localhost:3306/UTTLibraryDB`  
+- User: `root`  
+- Pass: `<mật khẩu của bạn>`  
 
 File cấu hình: `/src/com/uttlibrary/util/DBConnect.java`
 
----
+### 3.1 Hướng dẫn setup database
+
+1. Mở MySQL Workbench.
+2. Tạo database:
+CREATE DATABASE UTTLibraryDB;
+3. Import file SQL mẫu:
+
+/docs/create-tables.sql → tạo bảng
+
+/docs/seed-data.sql → thêm dữ liệu demo
+
+4. Kiểm tra các bảng đã có trong database.
 
 ## 🧰 4) Bộ công cụ dùng chung (ai code cũng phải gọi)
 
@@ -226,11 +237,12 @@ git push origin main
 
 ## 8) Hướng dẫn chạy dự án
 
-1. Import project vào NetBeans / IntelliJ
-2. Import thư viện trong thư mục `lib/`
-3. Import file SQL
-4. Chạy `Main.java`
-
+1. Clone repo về.
+2. Import project vào NetBeans hoặc IntelliJ.
+3. Đảm bảo thư mục lib/ có đầy đủ các file .jar (Java Swing, MySQL connector, v.v.)
+4. Import database bằng file SQL trong docs/.
+5. Build project.
+6. Chạy Main.java.
 ---
 
 ## 9) Lưu ý cuối
