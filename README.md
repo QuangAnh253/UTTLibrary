@@ -11,7 +11,7 @@
 Toàn bộ lịch làm việc, phân công nhiệm vụ và tiến độ được theo dõi qua Google Sheet bên dưới.
 Các thành viên cần cập nhật và kiểm tra task hằng ngày.
 
-👉 **LINK THEO DÕI TIẾN ĐỘ:** *[DÁN LINK GOOGLE SHEET CỦA BẠN VÀO ĐÂY]*
+👉 **LINK THEO DÕI TIẾN ĐỘ:** *[https://docs.google.com/spreadsheets/d/1exitOhMZ5CnytaU-PrWMDOcqPjOUvZh-dG-emB6qzh8/edit?usp=sharing]*
 
 ---
 
@@ -36,13 +36,13 @@ Các thành viên cần cập nhật và kiểm tra task hằng ngày.
 #### **1.1. Clone dự án lần đầu**
 
 ```bash
-git clone [LINK_GIT_REPO_CUA_BẠN]
+git clone [https://github.com/QuangAnh253/UTT-Library-Management]
 ```
 
 Sau khi clone xong, chạy:
 
 ```bash
-cd [TEN_THU_MUC_DU_AN]
+cd [UTT.QuanLyThuVien]
 ```
 
 ---
