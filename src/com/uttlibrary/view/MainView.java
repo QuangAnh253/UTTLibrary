@@ -5,6 +5,9 @@ import com.uttlibrary.controller.StatisticController;
 import javax.swing.*;
 import java.awt.*;
 import com.uttlibrary.view.panel.BookPanel;
+import com.uttlibrary.view.panel.AuthorPanel;
+import com.uttlibrary.view.panel.PublisherPanel;
+
 
 public class MainView extends JFrame {
 
@@ -17,6 +20,8 @@ public class MainView extends JFrame {
 
     private StatisticController statisticController;
 
+    AuthorPanel authorPanel = new AuthorPanel();
+    PublisherPanel publisherPanel = new PublisherPanel();
     public MainView() {
 
         setTitle("UTT Library Management");
@@ -39,7 +44,9 @@ public class MainView extends JFrame {
         content.add(dashboardPanel, "dashboard");
         content.add(bookPanel, "book");
         content.add(statisticPanel, "statistic");
-
+        content.add(authorPanel, "author");
+        content.add(publisherPanel, "publisher");
+        
         // Mặc định mở dashboard
         showCard("dashboard");
 
@@ -53,6 +60,8 @@ public class MainView extends JFrame {
         sidebar.btnDashboard.addActionListener(e -> showCard("dashboard"));
         sidebar.btnBook.addActionListener(e -> showCard("book"));
         sidebar.btnStatistic.addActionListener(e -> showCard("statistic"));
+        sidebar.btnAuthor.addActionListener(e -> showCard("author"));
+        sidebar.btnPublisher.addActionListener(e -> showCard("publisher"));
 
     }
 
@@ -60,4 +69,5 @@ public class MainView extends JFrame {
         CardLayout cl = (CardLayout) content.getLayout();
         cl.show(content, name);
     }
+    
 }
