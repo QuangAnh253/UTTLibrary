@@ -1,20 +1,37 @@
-# === JAVA ===
+# ===============================
+# JAVA
+# ===============================
 *.class
 *.log
 
-# === NETBEANS ===
+# ===============================
+# IDE
+# ===============================
+
+# NetBeans
 nbproject/private/
-build/
-dist/
+nbproject/project.properties
+nbproject/Makefile-*.properties
+nbproject/Package-*.properties
 nbactions.xml
 nb-configuration.xml
+build/
+dist/
 
-# === IDEA ===
+# IntelliJ IDEA
 .idea/
 *.iml
 out/
 
-# === OS TRASH ===
+# ===============================
+# OS TRASH
+# ===============================
 .DS_Store
 Thumbs.db
 
+# ===============================
+# DATABASE CONFIG (LOCAL ONLY)
+# ===============================
+
+# Chặn file DBConnect thật
+src/com/uttlibrary/util/DBConnect.java
