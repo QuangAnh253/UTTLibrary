@@ -4,10 +4,17 @@
  */
 package com.uttlibrary.controller;
 
+import com.uttlibrary.model.Supplier;
+import java.util.List;
+
 /**
  *
  * @author ADMIN
  */
 public class SupplierController {
+
+    public List<Supplier> getAllSuppliers() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }
