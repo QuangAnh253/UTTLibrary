@@ -10,7 +10,6 @@
 
 # NetBeans
 nbproject/private/
-nbproject/project.properties
 nbproject/Makefile-*.properties
 nbproject/Package-*.properties
 nbactions.xml
