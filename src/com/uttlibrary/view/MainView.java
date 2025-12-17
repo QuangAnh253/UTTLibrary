@@ -7,6 +7,7 @@ import java.awt.*;
 import com.uttlibrary.view.panel.BookPanel;
 import com.uttlibrary.view.panel.AuthorPanel;
 import com.uttlibrary.view.panel.PublisherPanel;
+import com.uttlibrary.view.panel.ReaderPanel;
 
 
 public class MainView extends JFrame {
@@ -17,6 +18,7 @@ public class MainView extends JFrame {
     DashboardPanel dashboardPanel = new DashboardPanel();
     BookPanel bookPanel = new BookPanel();
     StatisticPanel statisticPanel = new StatisticPanel();
+    ReaderPanel readerPanel = new ReaderPanel();
 
     private StatisticController statisticController;
 
@@ -46,6 +48,7 @@ public class MainView extends JFrame {
         content.add(statisticPanel, "statistic");
         content.add(authorPanel, "author");
         content.add(publisherPanel, "publisher");
+        content.add(readerPanel, "reader");
         
         // Mặc định mở dashboard
         showCard("dashboard");
@@ -62,6 +65,7 @@ public class MainView extends JFrame {
         sidebar.btnStatistic.addActionListener(e -> showCard("statistic"));
         sidebar.btnAuthor.addActionListener(e -> showCard("author"));
         sidebar.btnPublisher.addActionListener(e -> showCard("publisher"));
+        sidebar.btnReader.addActionListener(e -> showCard("reader"));
 
     }
 
