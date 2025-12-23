@@ -4,39 +4,29 @@
  */
 package com.uttlibrary.view.panel;
 
-/**
- *
- * @author ADMIN
- */
-
 import com.uttlibrary.controller.ReaderController;
 import com.uttlibrary.model.Reader;
 import com.uttlibrary.util.MessageBox;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
-public class ReaderPanel extends JPanel{
-    // CONTROLLER
-    // ==============================
+/**
+ *
+ * @author ADMIN
+ */
+public class ReaderPanel extends JPanel {
+
     private ReaderController controller = new ReaderController();
 
-    // ==============================
-    // KHAI BÁO UI
-    // ==============================
     private JTable table;
     private DefaultTableModel model;
 
     private JTextField txtFullName, txtBirthday, txtPhone;
-    private JRadioButton rdMale, rdFemale;
-    private JComboBox<String> cboReaderType;
+    private JComboBox<String> cboGender, cboReaderType;
 
     private int selectedId = -1;
-
-    private final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
     public ReaderPanel() {
         setLayout(new BorderLayout());
@@ -44,50 +34,33 @@ public class ReaderPanel extends JPanel{
         loadTableData();
     }
 
-    // =====================================================
-    // KHỞI TẠO GIAO DIỆN
-    // =====================================================
     private void initUI() {
 
         // ============================
-        // FORM NHẬP DỮ LIỆU
+        // FORM NHẬP LIỆU
         // ============================
         JPanel form = new JPanel(new GridBagLayout());
-        form.setBorder(BorderFactory.createTitledBorder("Thông tin độc giả"));
+        form.setBorder(BorderFactory.createTitledBorder("Thông tin đọc giả"));
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(8, 8, 8, 8);
-        gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.anchor = GridBagConstraints.WEST;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.weightx = 1;
 
         txtFullName = new JTextField();
-        txtBirthday = new JTextField(); // yyyy-MM-dd
+        txtBirthday = new JTextField();
         txtPhone = new JTextField();
 
-        rdMale = new JRadioButton("Nam");
-        rdFemale = new JRadioButton("Nữ");
-
-        ButtonGroup genderGroup = new ButtonGroup();
-        genderGroup.add(rdMale);
-        genderGroup.add(rdFemale);
-        rdMale.setSelected(true);
-
-        cboReaderType = new JComboBox<>(
-                new String[]{"Sinh viên", "Giảng viên", "Khách"}
-        );
+        cboGender = new JComboBox<>(new String[]{"Nam", "Nữ"});
+        cboReaderType = new JComboBox<>(new String[]{"Sinh viên", "Giảng viên", "Khác"});
 
         int row = 0;
-
-        addField(form, gbc, row++, "Họ tên:", txtFullName);
-        addField(form, gbc, row++, "Ngày sinh (yyyy-MM-dd):", txtBirthday);
-
-        JPanel genderPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        genderPanel.add(rdMale);
-        genderPanel.add(rdFemale);
-        addField(form, gbc, row++, "Giới tính:", genderPanel);
-
-        addField(form, gbc, row++, "Số điện thoại:", txtPhone);
-        addField(form, gbc, row++, "Loại độc giả:", cboReaderType);
+        addField(form, gbc, row++, "Họ và tên:", txtFullName);
+        addField(form, gbc, row++, "Ngày sinh (yyyy-mm-dd):", txtBirthday);
+        addField(form, gbc, row++, "Giới tính:", cboGender);
+        addField(form, gbc, row++, "SĐT:", txtPhone);
+        addField(form, gbc, row++, "Loại đọc giả:", cboReaderType);
 
         add(form, BorderLayout.NORTH);
 
@@ -96,7 +69,7 @@ public class ReaderPanel extends JPanel{
         // ============================
         model = new DefaultTableModel();
         model.setColumnIdentifiers(new String[]{
-                "ID", "Họ tên", "Ngày sinh", "Giới tính", "SĐT", "Loại"
+                "ID", "Họ và tên", "Ngày sinh", "Giới tính", "SĐT", "Loại đọc giả"
         });
 
         table = new JTable(model);
@@ -106,7 +79,7 @@ public class ReaderPanel extends JPanel{
         add(new JScrollPane(table), BorderLayout.CENTER);
 
         // ============================
-        // BUTTON
+        // BUTTONS
         // ============================
         JPanel buttons = new JPanel();
 
@@ -131,17 +104,17 @@ public class ReaderPanel extends JPanel{
     private void addField(JPanel form, GridBagConstraints gbc, int row, String label, JComponent field) {
         gbc.gridx = 0;
         gbc.gridy = row;
-        gbc.weightx = 0.3;
+        gbc.weightx = 0.2;
         form.add(new JLabel(label), gbc);
 
         gbc.gridx = 1;
-        gbc.weightx = 0.7;
+        gbc.weightx = 0.8;
         form.add(field, gbc);
     }
 
-    // =====================================================
-    // LOAD DỮ LIỆU TABLE
-    // =====================================================
+    // =========================================================
+    // LOAD TABLE DATA
+    // =========================================================
     private void loadTableData() {
         model.setRowCount(0);
 
@@ -150,88 +123,36 @@ public class ReaderPanel extends JPanel{
             model.addRow(new Object[]{
                     r.getReaderId(),
                     r.getFullName(),
-                    sdf.format(r.getBirthday()),
-                    r.getGender() != null && r.getGender() ? "Nam" : "Nữ",
+                    r.getBirthday(),
+                    r.getGender(),
                     r.getPhone(),
                     r.getReaderType()
             });
         }
     }
 
-    // =====================================================
-    // LẤY DỮ LIỆU TỪ FORM → MODEL
-    // =====================================================
-    private Reader getFormData() throws Exception {
+    // =========================================================
+    // LẤY DỮ LIỆU TỪ FORM → MODEL READER
+    // =========================================================
+    private Reader getFormData() {
         Reader r = new Reader();
-
         r.setFullName(txtFullName.getText());
-        r.setBirthday(sdf.parse(txtBirthday.getText()));
-        r.setGender(rdMale.isSelected());
+        r.setBirthday(txtBirthday.getText());
+        r.setGender((String) cboGender.getSelectedItem());
         r.setPhone(txtPhone.getText());
         r.setReaderType((String) cboReaderType.getSelectedItem());
-
         return r;
     }
 
-    // =====================================================
-    // THÊM ĐỘC GIẢ
-    // =====================================================
+    // =========================================================
+    // NÚT THÊM
+    // =========================================================
     private void addReader() {
-        try {
-            Reader r = getFormData();
-            String msg = controller.addReader(r);
+        Reader r = getFormData();
+        String msg = controller.addReader(r);
 
-            if (msg.equals("SUCCESS")) {
-                MessageBox.info(null, "Thêm độc giả thành công!");
-                loadTableData();
-                clearForm();
-            } else {
-                MessageBox.error(null, msg);
-            }
-        } catch (Exception e) {
-            MessageBox.error(null, "Ngày sinh phải đúng định dạng yyyy-MM-dd");
-        }
-    }
-
-    // =====================================================
-    // SỬA ĐỘC GIẢ
-    // =====================================================
-    private void updateReader() {
-        if (selectedId <= 0) {
-            MessageBox.warning(null, "Vui lòng chọn độc giả!");
-            return;
-        }
-
-        try {
-            Reader r = getFormData();
-            r.setReaderId(selectedId);
-
-            String msg = controller.updateReader(r);
-            if (msg.equals("SUCCESS")) {
-                MessageBox.info(null, "Cập nhật thành công!");
-                loadTableData();
-            } else {
-                MessageBox.error(null, msg);
-            }
-        } catch (Exception e) {
-            MessageBox.error(null, "Ngày sinh không hợp lệ!");
-        }
-    }
-
-    // =====================================================
-    // XÓA ĐỘC GIẢ
-    // =====================================================
-    private void deleteReader() {
-        if (selectedId <= 0) {
-            MessageBox.warning(null, "Chọn độc giả để xóa!");
-            return;
-        }
-
-        if (!MessageBox.confirm(null, "Bạn chắc chắn muốn xóa?")) return;
-
-        String msg = controller.deleteReader(selectedId);
         if (msg.equals("SUCCESS")) {
-            MessageBox.info(null, "Đã xóa!");
+            MessageBox.info(null, "Thêm đọc giả thành công!");
             loadTableData();
             clearForm();
         } else {
@@ -239,36 +160,81 @@ public class ReaderPanel extends JPanel{
         }
     }
 
-    // =====================================================
-    // LOAD TABLE → FORM
-    // =====================================================
+    // =========================================================
+    // NÚT SỬA
+    // =========================================================
+    private void updateReader() {
+        if (selectedId <= 0) {
+            MessageBox.warning(null, "Vui lòng chọn đọc giả cần sửa!");
+            return;
+        }
+
+        Reader r = getFormData();
+        r.setReaderId(selectedId);
+
+        String msg = controller.updateReader(r);
+
+        if (msg.equals("SUCCESS")) {
+            MessageBox.info(null, "Cập nhật thành công!");
+            loadTableData();
+        } else {
+            MessageBox.error(null, msg);
+        }
+    }
+
+    // =========================================================
+    // NÚT XÓA
+    // =========================================================
+    private void deleteReader() {
+        if (selectedId <= 0) {
+            MessageBox.warning(null, "Chọn đọc giả để xóa!");
+            return;
+        }
+
+        if (!MessageBox.confirm(null, "Xóa đọc giả này?")) {
+            return;
+        }
+
+        String msg = controller.deleteReader(selectedId);
+
+        if (msg.equals("SUCCESS")) {
+            MessageBox.info(null, "Đã xóa");
+            loadTableData();
+            clearForm();
+        } else {
+            MessageBox.error(null, msg);
+        }
+    }
+
+    // =========================================================
+    // KHI CLICK TABLE → LOAD LÊN FORM
+    // =========================================================
     private void loadSelectedRow() {
         int row = table.getSelectedRow();
-        if (row < 0) return;
+        if (row < 0) {
+            return;
+        }
 
         selectedId = (int) model.getValueAt(row, 0);
 
         txtFullName.setText(model.getValueAt(row, 1).toString());
         txtBirthday.setText(model.getValueAt(row, 2).toString());
-
-        String gender = model.getValueAt(row, 3).toString();
-        if (gender.equals("Nam")) rdMale.setSelected(true);
-        else rdFemale.setSelected(true);
-
+        cboGender.setSelectedItem(model.getValueAt(row, 3).toString());
         txtPhone.setText(model.getValueAt(row, 4).toString());
         cboReaderType.setSelectedItem(model.getValueAt(row, 5).toString());
     }
 
-    // =====================================================
+    // =========================================================
     // CLEAR FORM
-    // =====================================================
+    // =========================================================
     private void clearForm() {
         selectedId = -1;
         txtFullName.setText("");
         txtBirthday.setText("");
         txtPhone.setText("");
-        rdMale.setSelected(true);
+        cboGender.setSelectedIndex(0);
         cboReaderType.setSelectedIndex(0);
+
         table.clearSelection();
     }
 }
