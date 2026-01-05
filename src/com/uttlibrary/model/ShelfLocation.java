@@ -6,35 +6,47 @@ public class ShelfLocation {
     private String shelfCode;
     private String description;
 
-    public ShelfLocation() {}
-
     public ShelfLocation(int shelfId, String shelfCode, String description) {
         this.shelfId = shelfId;
         this.shelfCode = shelfCode;
         this.description = description;
     }
 
-    public int getShelfId() {
-        return shelfId;
+    public ShelfLocation() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public void setShelfId(int shelfId) {
-        this.shelfId = shelfId;
+    public int getShelfId() {
+        return shelfId;
     }
 
     public String getShelfCode() {
         return shelfCode;
     }
 
-    public void setShelfCode(String shelfCode) {
-        this.shelfCode = shelfCode;
-    }
-
     public String getDescription() {
         return description;
+    }
+
+    public void setShelfId(int shelfId) {
+        this.shelfId = shelfId;
+    }
+
+    public void setShelfCode(String shelfCode) {
+        this.shelfCode = shelfCode;
     }
 
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public String getShelfName() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public void setShelfName(String trim) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
+
+    
