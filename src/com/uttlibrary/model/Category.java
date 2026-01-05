@@ -38,4 +38,15 @@ public class Category {
         this.categoryName = categoryName;
     }
 
+    @Override
+    public String toString() {
+        return "Category{" + "id=" + id + ", categoryName=" + categoryName + '}';
+    }
+
+    public int getCategoryId() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    
+
 }

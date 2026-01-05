@@ -18,7 +18,7 @@ public class CategoryDAO extends BaseDAO<Category> {
             return ps.executeUpdate() > 0;
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("update Category error: " + e.getMessage());
         }
         return false;
     }
@@ -41,7 +41,7 @@ public class CategoryDAO extends BaseDAO<Category> {
                 list.add(c);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+             System.err.println("update Category error: " + e.getMessage());
         }
         return list;
     }
@@ -63,7 +63,7 @@ public class CategoryDAO extends BaseDAO<Category> {
                 );
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("update Category error: " + e.getMessage());
         }
         return null;
     }
@@ -80,8 +80,9 @@ public class CategoryDAO extends BaseDAO<Category> {
             return ps.executeUpdate() > 0;
 
         } catch (SQLException e) {
-            e.printStackTrace();
+             System.err.println("update Category error: " + e.getMessage());
         }
+        
         return false;
     }
 
@@ -96,7 +97,7 @@ public class CategoryDAO extends BaseDAO<Category> {
             return ps.executeUpdate() > 0;
 
         } catch (SQLException e) {
-            e.printStackTrace();
+             System.err.println("delete Category error: " + e.getMessage());
         }
         return false;
     }
