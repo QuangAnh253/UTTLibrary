@@ -11,48 +11,44 @@ import java.util.List;
  * @author ADMIN
  */
 public class ShelfLocationController {
-     private ShelfLocationDAO ShelfDAO;
-
-    public ShelfLocationController() {
-        ShelfDAO = new ShelfLocationDAO() {
-            public boolean insert(Object entity) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-            }
-
-            public boolean update(Object entity) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-            }
-        };
+    private final ShelfLocationDAO dao = new ShelfLocationDAO();
+// lấy danh sách phiếu nhập
+    public List<ShelfLocation> getAllShelves() {
+        return dao.findAll();
     }
-
-    // Lấy tất cả vị trí kệ sách
-    public List<ShelfLocation> getAll() {
-        return ShelfDAO.findAll();
+// kiểm tra 
+    private String validate(ShelfLocation s) {
+        if (s.getShelfName() == null || s.getShelfName().trim().isEmpty()) {
+            return "Tên kệ không được để trống!";
+        }
+        return null;
     }
+// thêm 
+    public String addShelf(ShelfLocation s) {
+        String err = validate(s);
+        if (err != null) return err;
 
-    // Thêm mới vị trí kệ
-    public boolean add(ShelfLocation s) {
-        if (s == null) return false;
-        if (s.getShelfCode() == null || s.getShelfCode().isEmpty()) return false;
-        return ShelfDAO.insert(s);
+        boolean ok = dao.insert(s);
+        return ok ? "SUCCESS" : "Không thể thêm vị trí kệ!";
     }
+// cập nhật 
+    public String updateShelf(ShelfLocation s) {
+        if (s.getShelfId() <= 0) return "ID kệ không hợp lệ!";
+        
+        String err = validate(s);
+        if (err != null) return err;
 
-    // Cập nhật vị trí kệ
-    public boolean update(ShelfLocation s) {
-        if (s == null) return false;
-        if (s.getShelfId() <= 0) return false;
-        return ShelfDAO.update(s);
+        boolean ok = dao.update(s);
+        return ok ? "SUCCESS" : "Không thể cập nhật vị trí kệ!";
     }
-
-    // Xóa vị trí kệ theo ID
-    public boolean delete(int id) {
-        if (id <= 0) return false;
-        return ShelfDAO.delete(id);
+//  xóa 
+    public String deleteShelf(int id) {
+        if (id <= 0) return "ID kệ không hợp lệ!";
+        
+        boolean ok = dao.delete(id);
+        return ok ? "SUCCESS" : "Có lỗi xảy ra hoặc kệ đang được sử dụng, không thể xóa!";
     }
-
-    // Tìm theo ID (nếu cần)
     public ShelfLocation findById(int id) {
-        return ShelfDAO.findById(id);
+        return dao.findById(id);
     }
 }
-
