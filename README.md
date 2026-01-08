@@ -108,14 +108,44 @@ git add path/to/file
 git commit -m "feat: thêm module quản lý nhà xuất bản"
 ```
 
+### 5.3 Quy tắc Controller
+
+- Phải override:
+  - `loadTable()`
+  - `add()`
+  - `update()`
+  - `delete()`
+
+### 5.4 Quy tắc Panel
+
+- Mỗi panel tương ứng 1 module
+- Không viết code SQL trong panel
+- Không xử lý nghiệp vụ trong view
+
 ---
 
 ### **Bước 5 — PULL thêm lần nữa để tránh xung đột**
 
 **Trước khi push**, luôn chạy lệnh sau:
 
+- Nhánh `main` được **bảo vệ** và **yêu cầu review** trước khi merge.
+
+---
+
+## Bước 1: Bắt đầu task mới
+
+Luôn bắt đầu từ nhánh `main` đã được cập nhật:
+
 ```bash
+# Chuyển về nhánh main
+git checkout main
+
+# Lấy code mới nhất
 git pull origin main
+
+Tạo **nhánh mới** cho nhiệm vụ theo cấu trúc:
+
+[ten-thanh-vien]/[mo-ta-ngan-task]
 ```
 
 Nếu có xung đột:
@@ -123,10 +153,12 @@ Nếu có xung đột:
 * Mở Visual Studio hoặc Git để resolve conflict
 * Sau khi resolve:
 
-  ```bash
+**Ví dụ:**
+
+```bash
   git add .
   git commit -m "fix: resolve conflict module the loai"
-  ```
+```
 
 ---
 
@@ -182,7 +214,7 @@ Mở `App.config` trong project `UTT.Library.GUI` và chỉnh dòng:
 
   ```
   Data Source=.\SQLEXPRESS;Initial Catalog=QuanLyThuVienUTT;Integrated Security=True
-  ```
+```
 
 ---
 
