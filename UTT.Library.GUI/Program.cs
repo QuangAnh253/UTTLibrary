@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
-using UTT.Library.GUI.Forms.Common;
+using UTT.Library.GUI.Forms.DanhMuc;
+
 
 namespace UTT.Library.GUI
 {
@@ -13,7 +14,9 @@ namespace UTT.Library.GUI
             Application.SetCompatibleTextRenderingDefault(false);
 
             // Chạy Form Đăng Nhập đầu tiên
-            Application.Run(new frmDangNhap());
+            Application.Run(new frmQuanLyTheLoai
+
+                ());
         }
     }
 }

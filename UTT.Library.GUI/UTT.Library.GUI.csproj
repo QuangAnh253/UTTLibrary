@@ -248,6 +248,9 @@
     <EmbeddedResource Include="Forms\DanhMuc\frmQuanLyTacGia.resx">
       <DependentUpon>frmQuanLyTacGia.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DanhMuc\frmQuanLyTheLoai.resx">
+      <DependentUpon>frmQuanLyTheLoai.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\HeThong\frmQuanLyTaiKhoan.resx">
       <DependentUpon>frmQuanLyTaiKhoan.cs</DependentUpon>
     </EmbeddedResource>
