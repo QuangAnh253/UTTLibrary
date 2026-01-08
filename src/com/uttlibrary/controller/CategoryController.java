@@ -1,13 +1,34 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.uttlibrary.controller;
 
-/**
- *
- * @author ADMIN
- */
+import com.uttlibrary.dao.CategoryDAO;
+import com.uttlibrary.model.Category;
+import java.util.List;
+
 public class CategoryController {
-    
+
+    private CategoryDAO categoryDAO;
+
+    public CategoryController() {
+        categoryDAO = new CategoryDAO();
+    }
+
+    public List<Category> getAllCategories() {
+        return categoryDAO.findAll();
+    }
+
+    public boolean addCategory(String name, String description) {
+        Category c = new Category();
+        c.setCategoryName(name);
+        c.setDescription(description);
+        return categoryDAO.insert(c);
+    }
+
+    public boolean updateCategory(int id, String name, String description) {
+        Category c = new Category(id, name, description);
+        return categoryDAO.update(c);
+    }
+
+    public boolean deleteCategory(int id) {
+        return categoryDAO.delete(id);
+    }
 }

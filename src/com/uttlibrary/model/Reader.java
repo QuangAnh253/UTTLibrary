@@ -8,21 +8,20 @@ package com.uttlibrary.model;
  *
  * @author ADMIN
  */
-
-import java.util.Date;
-
 public class Reader {
-    private Integer readerId;
+    private int readerId;
     private String fullName;
-    private Date birthday;
-    private Boolean gender;
+    private String birthday;
+    private String gender;
     private String phone;
     private String readerType;
 
+    // Constructor mặc định
     public Reader() {
     }
 
-    public Reader(Integer readerId, String fullName, Date birthday, Boolean gender, String phone, String readerType) {
+    // Constructor đầy đủ tham số
+    public Reader(int readerId, String fullName, String birthday, String gender, String phone, String readerType) {
         this.readerId = readerId;
         this.fullName = fullName;
         this.birthday = birthday;
@@ -31,11 +30,11 @@ public class Reader {
         this.readerType = readerType;
     }
 
-    public Integer getReaderId() {
+    public int getReaderId() {
         return readerId;
     }
 
-    public void setReaderId(Integer readerId) {
+    public void setReaderId(int readerId) {
         this.readerId = readerId;
     }
 
@@ -47,19 +46,19 @@ public class Reader {
         this.fullName = fullName;
     }
 
-    public Date getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 
-    public Boolean getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(Boolean gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
@@ -78,4 +77,6 @@ public class Reader {
     public void setReaderType(String readerType) {
         this.readerType = readerType;
     }
+    
+    
 }

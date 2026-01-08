@@ -12,27 +12,33 @@ package com.uttlibrary.model;
 import java.util.Date;
 
 public class LoanTicket {
-    private int id;
+    private int ticketId;
     private int readerId;
-    private Date loanDate;
-    private Date returnDate;
+    private int staffId;
+    private Date borrowDate;
+    private Date dueDate;
+    private String status;
+    private double totalFine;
 
     public LoanTicket() {
     }
 
-    public LoanTicket(int id, int readerId, Date loanDate, Date returnDate) {
-        this.id = id;
+    public LoanTicket(int ticketId, int readerId, int staffId, Date borrowDate, Date dueDate, String status, double totalFine) {
+        this.ticketId = ticketId;
         this.readerId = readerId;
-        this.loanDate = loanDate;
-        this.returnDate = returnDate;
+        this.staffId = staffId;
+        this.borrowDate = borrowDate;
+        this.dueDate = dueDate;
+        this.status = status;
+        this.totalFine = totalFine;
     }
 
-    public int getId() {
-        return id;
+    public int getTicketId() {
+        return ticketId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setTicketId(int ticketId) {
+        this.ticketId = ticketId;
     }
 
     public int getReaderId() {
@@ -43,21 +49,43 @@ public class LoanTicket {
         this.readerId = readerId;
     }
 
-    public Date getLoanDate() {
-        return loanDate;
+    public int getStaffId() {
+        return staffId;
     }
 
-    public void setLoanDate(Date loanDate) {
-        this.loanDate = loanDate;
+    public void setStaffId(int staffId) {
+        this.staffId = staffId;
     }
 
-    public Date getReturnDate() {
-        return returnDate;
+    public Date getBorrowDate() {
+        return borrowDate;
     }
 
-    public void setReturnDate(Date returnDate) {
-        this.returnDate = returnDate;
+    public void setBorrowDate(Date borrowDate) {
+        this.borrowDate = borrowDate;
     }
-    
-    
+
+    public Date getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(Date dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public double getTotalFine() {
+        return totalFine;
+    }
+
+    public void setTotalFine(double totalFine) {
+        this.totalFine = totalFine;
+    }
 }
