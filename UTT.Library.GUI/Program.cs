@@ -14,7 +14,8 @@ namespace UTT.Library.GUI
             Application.SetCompatibleTextRenderingDefault(false);
 
             // Chạy Form Đăng Nhập đầu tiên
-            Application.Run(new frmQuanLyTheLoai
+            Application.Run(new frmQuanLyTacGia
+
 
                 ());
         }
