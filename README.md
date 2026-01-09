@@ -1,104 +1,112 @@
-# 📘 UTT Library Management – Internal README
+﻿# 📚 HỆ THỐNG QUẢN LÝ THƯ VIỆN THÔNG MINH UTT (UTT-LIB)
 
-Dự án quản lý thư viện theo mô hình 3-layer: **Model – DAO – Controller – View**.  
-Phát triển bằng **Java Swing**, kết nối **MySQL**, chạy trên NetBeans hoặc IntelliJ.
-
----
-
-## 🚀 1) Mục tiêu dự án
-
-- Xây dựng hệ thống quản lý thư viện hoàn chỉnh.
-- Mỗi thành viên tự chịu trách nhiệm module của mình.
-- Code theo chuẩn thống nhất để tránh xung đột và dễ bảo trì.
+**Dự án Bài tập lớn – Lập trình trực quan C#**
+**Nhóm thực hiện:** Nhóm 4
+**GVHD:** ThS. Phạm Đức Anh
 
 ---
 
-## 🗂 2) Cấu trúc thư mục chính
+## 📅 BẢNG PHÂN CÔNG & TIẾN ĐỘ (TASK TRACKING)
 
-`src/com/uttlibrary/` gồm:
+Toàn bộ lịch làm việc, phân công nhiệm vụ và tiến độ được theo dõi qua Google Sheet bên dưới.
+Các thành viên cần cập nhật và kiểm tra task hằng ngày.
 
-- `main/` → Main.java
-- `auth/` → Login
-- `util/` → DB, Validator, Helper, MessageBox
-- `component/` → UI component dùng chung
-- `model/` → Class đại diện bảng DB
-- `dao/` → Data Access
-- `controller/` → Xử lý nghiệp vụ
-- `view/` → GUI panel + form
+👉 **LINK THEO DÕI TIẾN ĐỘ:** *https://docs.google.com/spreadsheets/d/1exitOhMZ5CnytaU-PrWMDOcqPjOUvZh-dG-emB6qzh8/edit?usp=sharing*
 
 ---
 
-## 🔌 3) Cấu hình Database (MySQL)
+## 🛠️ CÔNG NGHỆ SỬ DỤNG (TECH STACK)
 
-- URL: `jdbc:mysql://localhost:3306/UTTLibraryDB`
-- User: `root`
-- Pass: `<mật khẩu của bạn>`
+* **Ngôn ngữ:** C# (.NET Framework – Windows Forms Application)
+* **Cơ sở dữ liệu:** Microsoft SQL Server
+* **Kiến trúc:** Mô hình 3 lớp (3-Layer Architecture)
 
-File cấu hình: `/src/com/uttlibrary/util/DBConnect.java`
-
-### 3.1 Hướng dẫn setup database
-
-1. Mở MySQL Workbench.
-2. Tạo database:
-   CREATE DATABASE UTTLibraryDB;
-3. Import file SQL mẫu:
-
-/docs/create-tables.sql → tạo bảng
-
-/docs/seed-data.sql → thêm dữ liệu demo
-
-4. Kiểm tra các bảng đã có trong database.
-
-## 🧰 4) Bộ công cụ dùng chung (ai code cũng phải gọi)
-
-### 👉 DBConnect
-
-Dùng để mở connection MySQL.
-
-### 👉 Validator
-
-Check trống, số, email, độ dài.
-
-### 👉 DateFormatter
-
-Chuyển đổi định dạng ngày SQL ↔ hiển thị.
-
-### 👉 MessageBox
-
-Hiển thị thông báo, lỗi, cảnh báo, confirm.
-
-### 👉 SessionHelper
-
-Lưu user đăng nhập.
-
-### 👉 BaseDAO
-
-Tất cả DAO phải extends.
-
-### 👉 BaseController
-
-Tất cả Controller phải extends.
+  * **GUI:** Giao diện người dùng
+  * **BLL:** Xử lý nghiệp vụ
+  * **DAL:** Truy xuất dữ liệu
+  * **DTO:** Truyền tải dữ liệu
+* **Công cụ:** Visual Studio 2019/2022, Git/GitHub
 
 ---
 
-## 🧠 5) **Quy tắc code CHUẨN cho cả team**
+## 🚀 HƯỚNG DẪN CÀI ĐẶT (GETTING STARTED)
 
-### 5.1 Quy tắc đặt tên
+### **1. Làm việc với Git (Clone, Pull, Commit, Push)**
 
-- CamelCase (BookDAO, BorrowDetailController)
-- Biến: `bookList`, `readerId`
-- Hằng số: `DEFAULT_PATTERN`
-- SQL dùng lowercase_underscore
+#### **1.1. Clone dự án lần đầu**
 
-### 5.2 Quy tắc viết DAO
+```bash
+git clone https://github.com/QuangAnh253/UTT-Library-Management.git
+```
 
-- Tất cả DAO extends BaseDAO
-- Khuôn mẫu fix cứng:
-  - `findAll()`
-  - `findById()`
-  - `insert()`
-  - `update()`
-  - `delete()`
+Sau khi clone xong, chạy:
+
+```bash
+cd UTT.QuanLyThuVien
+```
+
+---
+
+### **1.2. Quy trình làm việc chuẩn mỗi khi lập trình**
+
+Để tránh xung đột code và ghi đè lẫn nhau, mỗi thành viên phải tuân thủ đúng thứ tự sau:
+
+---
+
+## **QUY TRÌNH CHUẨN: PULL → CODE → COMMIT → PUSH**
+
+### **Bước 1 — Luôn PULL trước khi bắt đầu code**
+
+Mục tiêu: cập nhật code mới nhất từ server về máy.
+
+```bash
+git pull origin main
+```
+
+Nếu nhóm dùng nhánh khác (develop, feature…), chỉnh lại tương ứng.
+
+---
+
+### **Bước 2 — Tiến hành lập trình**
+
+* Chỉ sửa đúng module được giao.
+* Không đụng vào các file nằm trong “DO NOT TOUCH”.
+* Kiểm tra kỹ các file trước khi commit.
+
+---
+
+### **Bước 3 — Thêm file vào staging**
+
+```bash
+git add .
+```
+
+Hoặc thêm từng file:
+
+```bash
+git add path/to/file
+```
+
+---
+
+### **Bước 4 — Commit với message chuẩn**
+
+**Quy tắc message:** viết rõ ràng, mạch lạc, có phân loại:
+
+| Loại commit   | Cú pháp   | Ví dụ                                            |
+| ------------- | --------- | ------------------------------------------------ |
+| Tính năng mới | feat:     | `feat: thêm chức năng quản lý thể loại`          |
+| Sửa lỗi       | fix:      | `fix: sửa lỗi không load được danh sách tác giả` |
+| Tối ưu        | refactor: | `refactor: tối ưu code DAL_TacGia`               |
+| Giao diện     | ui:       | `ui: chỉnh layout form quản lý sách`             |
+| Cấu hình      | config:   | `config: cập nhật connection string`             |
+| Dữ liệu       | data:     | `data: thêm dữ liệu mẫu cho bảng TheLoai`        |
+
+**Ví dụ commit đúng chuẩn:**
+
+```bash
+git commit -m "feat: thêm module quản lý nhà xuất bản"
+```
 
 ### 5.3 Quy tắc Controller
 
@@ -116,9 +124,9 @@ Tất cả Controller phải extends.
 
 ---
 
-# 🔄 Quy trình Pull Request – Quản lý code
+### **Bước 5 — PULL thêm lần nữa để tránh xung đột**
 
-Chúng ta sử dụng **mô hình Pull Request (PR)** để quản lý code.
+**Trước khi push**, luôn chạy lệnh sau:
 
 - Nhánh `main` được **bảo vệ** và **yêu cầu review** trước khi merge.
 
@@ -140,168 +148,149 @@ Tạo **nhánh mới** cho nhiệm vụ theo cấu trúc:
 [ten-thanh-vien]/[mo-ta-ngan-task]
 ```
 
-### Prefix nhánh theo thành viên:
+Nếu có xung đột:
 
-| Thành viên        | Prefix nhánh |
-| ----------------- | ------------ |
-| Nguyễn Duy Thành  | duythanh     |
-| Vũ Thị Thùy Trang | thuytrang    |
-| Nguyễn Minh Lộc   | vanloc       |
-| Nguyễn Thị Hồng   | thihong      |
-| Lê Quang Anh      | quanganh     |
+* Mở Visual Studio hoặc Git để resolve conflict
+* Sau khi resolve:
 
 **Ví dụ:**
 
 ```bash
-# Duy Thành làm module Sách
-git checkout -b duythanh/feature-module-sach
+  git add .
+  git commit -m "fix: resolve conflict module the loai"
 ```
 
 ---
 
-## Bước 2: Code và Commit
+### **Bước 6 — Push lên Git**
 
-- Làm việc trên nhánh mới của bạn.
-- Commit các thay đổi thường xuyên với **message rõ ràng**.
+Đẩy code lên repository:
 
 ```bash
-# Thêm các file đã thay đổi
-git add .
-
-# Commit với message
-git commit -m "Feat: Hoan thien chuc nang BookDAO"
+git push origin main
 ```
 
 ---
 
-## Bước 3: Push và Tạo Pull Request
+## **TÓM TẮT QUY TRÌNH GIT CHUẨN**
 
-- Khi hoàn thành task, **đẩy nhánh lên GitHub**:
-
-```bash
-# Đẩy nhánh mới lên remote (thêm -u cho lần đầu tiên)
-git push -u origin [ten-nhanh-cua-ban]
 ```
-
-- Truy cập GitHub → sẽ thấy thông báo **"Compare & pull request"** → nhấn vào.
-- Đặt **tiêu đề rõ ràng**, ví dụ: “Hoàn thành chức năng Quản lý Sách”.
-- Trong phần **Reviewers**, chọn **Quang Anh**.
-- Nhấn **Create pull request**.
-
----
-
-## Bước 4: Review và Merge
-
-- **Thành viên không tự merge** code vào `main`.
-
-- **Quang Anh** sẽ review code:
-
-  - Nếu code đạt yêu cầu → merge PR.
-  - Nếu cần chỉnh sửa → comment → thành viên sửa trên **nhánh cũ** → push lên PR (PR tự cập nhật).
-
-- Sau khi nhánh được merge:
-
-```bash
-# Quay về main và cập nhật code mới
-git checkout main
 git pull origin main
-
-# Xóa nhánh local
-git branch -d [ten-nhanh-cua-ban]
+↓
+Code
+↓
+git add .
+↓
+git commit -m "message"
+↓
+git pull origin main   # tránh conflict
+↓
+git push origin main
 ```
 
 ---
 
-💡 **Lưu ý:**
+### 2. Khởi tạo cơ sở dữ liệu (BẮT BUỘC)
 
-- Message commit nên bắt đầu với **type**: `Feat:`, `Fix:`, `Refactor:`, …
-- Luôn pull trước khi bắt đầu task để tránh conflict.
+1. Mở **SQL Server Management Studio (SSMS)**
+2. Chạy file `create-tables.sql` để tạo database và các bảng
+3. Chạy file `data-seed.sql` để sinh dữ liệu mẫu
 
-## 7) PHÂN CÔNG CHI TIẾT THEO FILE
+   * Tài khoản mẫu:
 
-### 1) **QUANG ANH**
+     * **Admin:** admin
+     * **Password:** adminpass
 
-#### A. CORE
+### 3. Cấu hình Connection String
 
-- main/Main.java
-- auth/LoginView.java
-- auth/LoginController.java
-- auth/AuthService.java
-- util/\* (DBConnect, Validator, DateFormatter, MessageBox, SessionHelper)
-- component/\*
-- view/MainView.java
-- view/DashboardPanel.java
-- view/StatisticPanel.java
-- dao/BaseDAO.java
-- controller/BaseController.java
+Mở `App.config` trong project `UTT.Library.GUI` và chỉnh dòng:
 
-#### B. 3 module:
+* SQL mặc định:
 
-**Book – LoanTicket – LoanDetail**
+  ```
+  Data Source=.;Initial Catalog=QuanLyThuVienUTT;Integrated Security=True
+  ```
+* SQL Express:
 
-- model/\*
-- dao/\*
-- controller/\*
-- view/panel/\*
+  ```
+  Data Source=.\SQLEXPRESS;Initial Catalog=QuanLyThuVienUTT;Integrated Security=True
+```
 
 ---
 
-### 2) **DUY THÀNH**
+## 📘 HƯỚNG DẪN LẬP TRÌNH MODULE (DEVELOPER GUIDE)
 
-**Reader – Staff – Booking**
-
-- model/Reader.java
-- model/Staff.java
-- model/Booking.java
-- dao/\*
-- controller/\*
-- view/panel/\*
+**Lưu ý:** Sử dụng module mẫu **Quản lý Tác giả** để đảm bảo đồng bộ.
+File mẫu: `GUI/Forms/DanhMuc/frmQuanLyTacGia.cs`
 
 ---
 
-### 3) **THÙY TRANG – Supplier – ImportBook – Regulation**
-
-- model/\*
-- dao/\*
-- controller/\*
-- view/panel/\*
+### **QUY TRÌNH 4 BƯỚC**
 
 ---
 
-### 4) **HỒNG – Category – ShelfLocation **
+### **1. Tầng DTO (Data Transfer Object)**
 
-- model/\*
-- dao/\*
-- controller/\*
-- view/panel/\*
-
----
-
-### 5) **LỘC – Author – Publisher**
-
-- model/\*
-- dao/\*
-- controller/\*
-- view/panel/\*
+* Mở project **UTT.Library.DTO**
+* Tạo file class mới (VD: `DTO_TheLoai.cs`)
+* Các property phải trùng tên cột SQL
+* Có thể copy từ `DTO_TacGia.cs` rồi đổi tên
 
 ---
 
-## 8) Hướng dẫn chạy dự án
+### **2. Tầng DAL (Data Access Layer)**
 
-1. Clone repo về.
-2. Import project vào NetBeans hoặc IntelliJ.
-3. Đảm bảo thư mục lib/ có đầy đủ các file .jar (Java Swing, MySQL connector, v.v.)
-4. Import database bằng file SQL trong docs/.
-5. Build project.
-6. Chạy Main.java.
+* Mở **UTT.Library.DAL → Repositories**
+* Tạo file mới (VD: `DAL_TheLoai.cs`)
+* Cài đặt 4 hàm chính:
+
+  * `GetDanhSach()`
+  * `Them()`
+  * `Sua()`
+  * `Xoa()`
+* Bắt buộc sử dụng parameter dạng `@Parameter`, không được nối chuỗi lệnh SQL
 
 ---
 
-## 9) Lưu ý cuối
+### **3. Tầng BLL (Business Logic Layer)**
 
-- Không push file `.class`, `dist/`, `build/`
-- CÓ push thư viện `.jar` trong `lib/`
-- Đặt tên file theo đúng mẫu nhóm đã thống nhất
-- Không sửa file của người khác khi chưa trao đổi
+* Mở **UTT.Library.BLL → Services**
+* Tạo file mới (VD: `BLL_TheLoai.cs`)
+* Gọi hàm từ DAL
+* Thêm logic nghiệp vụ (VD: Không cho thêm nếu tên trống)
+
+---
+
+### **4. Tầng GUI (Giao diện)**
+
+* Mở **UTT.Library.GUI → Forms/DanhMuc**
+* Tạo form mới (VD: `frmQuanLyTheLoai.cs`)
+* Thiết kế giao diện tương tự `frmQuanLyTacGia`
+* Copy code xử lý và đổi tên biến phù hợp
+* Sử dụng `ValidationHelper.IsRequired(...)` để kiểm tra nhập liệu
+
+---
+
+## ⛔ QUY TẮC BẤT KHẢ XÂM PHẠM (DO NOT TOUCH)
+
+Các file sau **tuyệt đối không chỉnh sửa**
+
+* `UTT.Library.DAL/Database/DatabaseHelper.cs` – lớp lõi xử lý Database
+* `UTT.Library.GUI/Forms/Common/frmMain.cs` – giao diện khung chính
+* `UTT.Library.GUI/Common/Session.cs` – quản lý phiên đăng nhập
+
+Nếu phát hiện lỗi trong các file trên, báo ngay vào nhóm Zalo.
+
+---
+
+## 📝 QUY TẮC ĐẶT TÊN (NAMING CONVENTION)
+
+| Loại control / biến | Quy tắc       | Ví dụ                     |
+| ------------------- | ------------- | ------------------------- |
+| TextBox             | `txtTenBien`  | txtMaSach, txtTenDangNhap |
+| Button              | `btnHanhDong` | btnThem, btnLuu           |
+| ComboBox            | `cboTen`      | cboTheLoai                |
+| DataGridView        | `dgvDanhSach` | dgvTacGia                 |
+| Biến cục bộ         | camelCase     | maSach, danhSachTacGia    |
 
 ---
