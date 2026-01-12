@@ -1,12 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UTT.Library.DAL.Repositories;
+using UTT.Library.DTO;
 
 namespace UTT.Library.BLL.Services
 {
-    internal class BLL_NhaXuatBan
+    public class BLL_NhaXuatBan
     {
+
+        private DAL_NhaXuatBan _dal = new DAL_NhaXuatBan();
+
+        public DataTable LayDanhSach()
+        {
+            return _dal.GetDanhSach();
+        }
+
+        public DataTable TimKiem(string keyword)
+        {
+            return _dal.TimKiem(keyword);
+        }
+
+        public string Them(DTO_NhaXuatBan tg)
+        {
+            // Có thể thêm check trùng mã ở đây nếu cần
+            if (_dal.Them(tg)) return ""; // Rỗng là thành công
+            return "Không thể thêm thể loại" +
+                " (có thể trùng mã)!";
+        }
+
+        public string Sua(DTO_NhaXuatBan tg)
+        {
+            if (_dal.Sua(tg)) return "";
+            return "Cập nhật thất bại!";
+        }
+
+        public string Xoa(string ma)
+        {
+            if (_dal.Xoa(ma)) return "";
+            return "Xóa thất bại (Dữ liệu đang được sử dụng)!";
+        }
     }
 }

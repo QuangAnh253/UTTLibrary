@@ -198,7 +198,7 @@
             this.btnExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExport.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExport.ForeColor = System.Drawing.Color.White;
-            this.btnExport.Location = new System.Drawing.Point(21, 246);
+            this.btnExport.Location = new System.Drawing.Point(8, 206);
             this.btnExport.Margin = new System.Windows.Forms.Padding(4);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(136, 39);
@@ -218,7 +218,7 @@
             this.dgvDanhSach.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvDanhSach.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvDanhSach.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDanhSach.Location = new System.Drawing.Point(21, 315);
+            this.dgvDanhSach.Location = new System.Drawing.Point(32, 273);
             this.dgvDanhSach.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDanhSach.MultiSelect = false;
             this.dgvDanhSach.Name = "dgvDanhSach";
@@ -226,7 +226,7 @@
             this.dgvDanhSach.RowTemplate.Height = 32;
             this.dgvDanhSach.RowTemplate.ReadOnly = true;
             this.dgvDanhSach.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDanhSach.Size = new System.Drawing.Size(954, 441);
+            this.dgvDanhSach.Size = new System.Drawing.Size(793, 441);
             this.dgvDanhSach.TabIndex = 12;
             this.dgvDanhSach.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_CellContentClick);
             // 
@@ -240,7 +240,7 @@
             this.btnTimKiem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTimKiem.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTimKiem.ForeColor = System.Drawing.Color.White;
-            this.btnTimKiem.Location = new System.Drawing.Point(872, 146);
+            this.btnTimKiem.Location = new System.Drawing.Point(433, 191);
             this.btnTimKiem.Margin = new System.Windows.Forms.Padding(4);
             this.btnTimKiem.Name = "btnTimKiem";
             this.btnTimKiem.Size = new System.Drawing.Size(157, 39);
@@ -255,7 +255,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTimKiem.AutoSize = true;
             this.lblTimKiem.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTimKiem.Location = new System.Drawing.Point(32, 154);
+            this.lblTimKiem.Location = new System.Drawing.Point(19, 114);
             this.lblTimKiem.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTimKiem.Name = "lblTimKiem";
             this.lblTimKiem.Size = new System.Drawing.Size(92, 25);
@@ -268,10 +268,10 @@
             this.txtTimKiem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTimKiem.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTimKiem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(34)))), ((int)(((byte)(98)))));
-            this.txtTimKiem.Location = new System.Drawing.Point(137, 151);
+            this.txtTimKiem.Location = new System.Drawing.Point(124, 111);
             this.txtTimKiem.Margin = new System.Windows.Forms.Padding(4);
             this.txtTimKiem.Name = "txtTimKiem";
-            this.txtTimKiem.Size = new System.Drawing.Size(701, 32);
+            this.txtTimKiem.Size = new System.Drawing.Size(486, 32);
             this.txtTimKiem.TabIndex = 11;
             // 
             // label1
@@ -281,7 +281,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(34)))), ((int)(((byte)(98)))));
-            this.label1.Location = new System.Drawing.Point(105, 49);
+            this.label1.Location = new System.Drawing.Point(92, 9);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(326, 46);
@@ -301,7 +301,7 @@
             this.panelRight.Location = new System.Drawing.Point(533, 0);
             this.panelRight.Margin = new System.Windows.Forms.Padding(4);
             this.panelRight.Name = "panelRight";
-            this.panelRight.Size = new System.Drawing.Size(999, 625);
+            this.panelRight.Size = new System.Drawing.Size(838, 534);
             this.panelRight.TabIndex = 5;
             // 
             // panelLeft
@@ -322,14 +322,14 @@
             this.panelLeft.Location = new System.Drawing.Point(0, 0);
             this.panelLeft.Margin = new System.Windows.Forms.Padding(4);
             this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Size = new System.Drawing.Size(533, 625);
+            this.panelLeft.Size = new System.Drawing.Size(533, 534);
             this.panelLeft.TabIndex = 4;
             // 
             // frmQuanLyTheLoai
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1532, 625);
+            this.ClientSize = new System.Drawing.Size(1371, 534);
             this.Controls.Add(this.panelRight);
             this.Controls.Add(this.panelLeft);
             this.Name = "frmQuanLyTheLoai";
